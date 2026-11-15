@@ -1,0 +1,11 @@
+import { readFileSync, existsSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const root = new URL('../', import.meta.url);
+const text = p => readFileSync(new URL(p, root), 'utf8');
+assert.ok(existsSync(new URL('game/index.html', root)), 'game shell missing');
+assert.ok(existsSync(new URL('game/tactical.js', root)), 'game module missing');
+const html = text('game/index.html');
+const game = text('game/tactical.js');
+for (const token of ['importmap', 'three', 'objective', 'cross', 'tactical.js']) assert.ok(html.includes(token), `HTML lacks ${token}`);
+for (const token of ['mousemove', 'OBJECTIVE', 'weapons', 'bots', 'requestAnimationFrame', 'raycaster', 'round']) assert.ok(game.includes(token), `game lacks ${token}`);
+console.log('contract OK');
