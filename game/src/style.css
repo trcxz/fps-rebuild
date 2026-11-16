@@ -39,7 +39,7 @@ canvas#view{position:fixed;inset:0;display:block;width:100%;height:100%}
 .radio{position:absolute;left:14px;top:196px;width:330px}
 .radio div{margin:2px 0;text-shadow:0 1px 2px #000;font-size:12px}
 .mini{position:absolute;left:14px;top:14px;width:172px;height:172px;border-radius:3px}
-#cmap{position:absolute;left:14px;top:14px;width:172px;height:172px;border:1px solid #ffffff44;border-radius:3px;background:#150f1ccc}
+#cmap{position:absolute;left:14px;top:14px;width:172px;height:172px;border:1px solid #ffffff44;border-radius:3px;background:#2a2234dd}
 .banner{position:absolute;left:0;right:0;top:20%;text-align:center;text-shadow:0 2px 8px #000}
 .banner h1{margin:0;font-size:44px;letter-spacing:8px}.banner p{margin:6px 0;font-size:15px;letter-spacing:3px;color:#ffe0b0}
 .prog{position:absolute;left:50%;bottom:30%;transform:translateX(-50%);width:300px;padding:8px 12px;text-align:center}
@@ -60,5 +60,5 @@ canvas#view{position:fixed;inset:0;display:block;width:100%;height:100%}
 .score table{width:100%;border-collapse:collapse}.score th{font-size:10px;letter-spacing:2px;color:#d6c3b0;text-align:right}
 .score th:first-child,.score td:first-child{text-align:left}.score td{text-align:right;padding:3px 0}
 .score tr.me td{background:#ffffff18}.score tr.dead{opacity:.45}
-.help{position:absolute;right:14px;bottom:110px;text-align:right;font-size:10px;color:#e8d6c0aa;line-height:1.5}
+.help{position:absolute;right:14px;bottom:128px;text-align:right;font-size:10px;color:#e8d6c0aa;line-height:1.5}
 .scope{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#0000 0,#0000 26vh,#000 26.4vh)}

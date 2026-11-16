@@ -31,14 +31,14 @@ export function applyShot(name) {
     G.score = [3, 2]; G.round = 6;
     giveWeapon(p, 'halberd'); p.armor = 100; p.cur = 'halberd'; p.mag.halberd = 24; p.reserve.halberd = 90;
     p.nades.smoke = 1; p.nades.frag = 1; p.nadeSel = 'frag';
-    pose(0, -22, -3, -30, -20, 'halberd');
-    p.hp = 82; p.flashShow = 0.05;
-    pose(1, -26.5, -8.6, -30, -21, 'wasp', { crouch: false });
-    pose(2, -16.5, -12, -30, -20, 'halberd');
+    pose(0, -21, -4.5, -27, -16, 'halberd');
+    p.hp = 82; p.flashShow = 0.05; p.mag.halberd = 24;
+    pose(1, -24.6, -8.8, -29, -17, 'wasp', { crouch: false });
+    pose(2, -17.5, -9.5, -28, -17, 'halberd');
     pose(3, -4, 14, 0, -10, 'wasp'); pose(4, 3, 20, 0, -10, 'halberd');
-    pose(5, -30.2, -19.5, -22, -3, 'halberd');
+    pose(5, -28.2, -15.2, -22, -3, 'halberd');
     G.actors[5].flashShow = 0.05;
-    pose(6, -23, -24.5, -22, -4, 'wasp');
+    pose(6, -24.5, -22.5, -22, -4, 'wasp');
     pose(7, 22, -20, 20, 0, 'halberd'); pose(8, 28, -18, 22, -4, 'wasp'); pose(9, 6, -30, 0, 0, 'wasp');
     G.actors[1].spotted = 9; G.actors[5].spotted = 9; G.actors[6].spotted = 9;
     G.ui.hitT = G.time - 0.05; G.ui.hitHead = false;
@@ -52,11 +52,10 @@ export function applyShot(name) {
     G.phase = 'freeze'; G.phaseT = 11; G.elapsed = 0; G.ui.buy = true; G.round = 2; G.score = [1, 0];
     p.money = 3400; p.pistol = 'pike';
     p.x = 0; p.z = 35; p.yaw = 0; p.pitch = 0.04;
-    pose(1, -3, 35, 0, 20, 'wasp'); pose(2, 3, 35, 0, 20, 'bulwark');
-    pose(3, -6, 35, 0, 20, 'halberd'); pose(4, 6, 35, 0, 20, 'wasp');
+    pose(1, -2.2, 31.5, 0, 20, 'wasp'); pose(2, 2.4, 30, 0, 20, 'bulwark');
+    pose(3, -5.5, 29, 0, 20, 'halberd'); pose(4, 6, 32, 0, 20, 'wasp');
     for (let i = 5; i < 10; i++) pose(i, -6 + (i - 5) * 3, -35, 0, 0, 'wasp');
-    setBanner('ROUND 2', 'CORSAIRS attack', 0, 99);
-    pushRadio(0, 'Comms', 'Plan: split.');
+        pushRadio(0, 'Comms', 'Plan: split.');
   } else if (name === 'plant') {
     liveRound(51);
     G.score = [4, 3]; G.round = 8;
@@ -82,7 +81,7 @@ export function applyShot(name) {
     // wide: free camera over the whole map, bots spread along their routes
     liveRound(64);
     G.score = [2, 2]; G.round = 5;
-    G.ui.free = { x: 0, y: 34, z: 56, pitch: -0.62, yaw: 0, fov: 66 };
+    G.ui.free = { x: 0, y: 62, z: 40, pitch: -1.2, yaw: 0, fov: 62 };
     const spots = [[-22, 22], [-8, 14], [0, 3], [8, 12], [22, 20], [-25, -8], [-12, -14], [26, -8], [6, -28], [-3, -25]];
     spots.forEach(([x, z], i) => pose(i, x, z, i < 5 ? x * 0.5 : 0, i < 5 ? -30 : 20, i % 3 ? 'wasp' : 'halberd'));
     G.actors[0].alive = true;

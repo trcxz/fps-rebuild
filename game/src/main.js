@@ -9,7 +9,7 @@ import { buildWorld } from './world.js';
 import { buildHumanoid, setHeldGun, poseHumanoid, buildViewmodels } from './models.js';
 import { hooks, fire, tickWeapon, curW, selectWeapon, startReload, spreadOf, eyeY } from './actors.js';
 import { stepPlayer } from './movement.js';
-import { stepGrenades, throwNade, nadeHooks } from './grenades.js';
+import { stepGrenades, throwNade, nadeHooks, smokeBlocks } from './grenades.js';
 import { stepBot } from './bots.js';
 import { initMatch, stepRound, buyItem, roundHooks } from './round.js';
 import { lineClear } from './map.js';
@@ -216,7 +216,7 @@ function syncView(dt, time) {
     poseHumanoid(m, a, time);
     m.flash.visible = a.flashShow > 0 && a.alive;
     // Enemy nametags only through a clear line of sight; teammates always.
-    if (a.alive) m.tag.visible = a.team === p.team || lineClear(p.x, eyeY(p), p.z, a.x, a.y + 2, a.z);
+    if (a.alive) m.tag.visible = a.team === p.team || (lineClear(p.x, eyeY(p), p.z, a.x, a.y + 2, a.z) && !smokeBlocks(p.x, p.z, a.x, a.z));
   }
 }
 

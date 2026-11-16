@@ -96,7 +96,7 @@ const MS = 172 / 90, mx = (x) => (x + 45) * MS, mz = (z) => (z + 45) * MS;
 function drawMap(p) {
   const g = mapCtx;
   g.clearRect(0, 0, 172, 172);
-  g.fillStyle = '#3a3040';
+  g.fillStyle = '#8f7f98';
   for (const o of BOXES) g.fillRect(mx(o.x1), mz(o.z1), (o.x2 - o.x1) * MS, (o.z2 - o.z1) * MS);
   g.fillStyle = '#ffd166'; g.font = 'bold 14px monospace'; g.textAlign = 'center'; g.textBaseline = 'middle';
   for (const k in SITES) g.fillText(k, mx(SITES[k].x), mz(SITES[k].z));
@@ -136,6 +136,7 @@ export function updateHud(p, spread) {
   document.getElementById('res').textContent = w.melee ? '' : '/ ' + p.reserve[p.cur];
   document.getElementById('slots').innerHTML = slotText(p);
   drawMap(p);
+  $.help.hidden = G.frozen || G.time > 25;
 
   // feed and radio fade out by age
   $.feed.innerHTML = G.feed.filter((f) => G.time - f.t < FEED_SEC).map((f) =>
