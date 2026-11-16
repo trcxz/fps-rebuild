@@ -38,7 +38,7 @@ function scan(a) {
   for (const o of G.actors) {
     if (!o.alive || o.team === a.team) continue;
     const dx = o.x - a.x, dz = o.z - a.z, d = Math.hypot(dx, dz);
-    if (d > 75 || d >= bd) continue;
+    if (d > 42 || d >= bd) continue;
     if (Math.abs(angleDiff(yawTo(dx, dz), a.yaw)) > 1.25 && d > 3) continue;
     if (a.flashT > 0.6) continue;
     if (!lineClear(a.x, ey, a.z, o.x, o.y + 1.35, o.z) || smokeBlocks(a.x, a.z, o.x, o.z)) continue;
