@@ -4,7 +4,9 @@ import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-threejs.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
+// Output goes to MAKEFUN_OUTPUT_DIR (the platform sets /output); game/ and screenshots/ are copied verbatim.
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+if (!existsSync(join(here, 'game', 'index.html'))) throw new Error('game/index.html missing');
 mkdirSync(out, { recursive: true });
 rmSync(join(out, 'game'), { recursive: true, force: true });
 cpSync(join(here, 'game'), join(out, 'game'), { recursive: true });
