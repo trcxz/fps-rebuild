@@ -154,27 +154,28 @@ export function buildViewmodels(T, team) {
   for (const id of ['knife', 'pike', 'anvil', 'wasp', 'bulwark', 'halberd', 'longsight']) {
     const root = new THREE.Group();
     const { g, muzzleZ } = buildGun(id);
-    g.scale.setScalar(1.25);
+    g.scale.setScalar(0.8);
     root.add(g);
     const sleeve = flat(tm.cloth, 0.8), skin = flat(tm.skin, 0.9);
-    const rh = new THREE.Group();
-    part(rh, 0.09, 0.09, 0.45, 0.02, -0.12, 0.28, sleeve, false);
-    part(rh, 0.08, 0.08, 0.12, 0.02, -0.08, 0.02, skin, false);
-    root.add(rh);
+    // Right hand wraps the grip, forearm runs back and down out of frame.
+    part(root, 0.075, 0.075, 0.4, 0.0, -0.12, 0.25, sleeve, false);
+    part(root, 0.07, 0.07, 0.09, 0.0, -0.08, 0.06, skin, false);
     if (id !== 'knife') {
-      const lh = new THREE.Group();
-      part(lh, 0.09, 0.09, 0.5, -0.17, -0.2, -0.12, sleeve, false);
-      part(lh, 0.08, 0.08, 0.1, -0.1, -0.06, -0.38, skin, false);
-      root.add(lh);
+      // Left hand cups the fore-end, forearm comes in from the lower left.
+      const reach = Math.max(0.2, -muzzleZ * 0.8 * 0.45);
+      const fa = part(root, 0.07, 0.07, 0.5, -0.12, -0.14, -reach + 0.28, sleeve, false);
+      fa.rotation.y = -0.2;
+      part(root, 0.075, 0.075, 0.09, -0.05, -0.065, -reach, skin, false);
     }
     const flash = buildFlash(T);
-    flash.position.set(0, 0.01, muzzleZ * 1.25);
-    flash.children[0].scale.set(0.35, 0.35, 1);
+    flash.position.set(0, 0.0, muzzleZ * 0.8 - 0.08);
+    flash.children[0].scale.set(0.55, 0.55, 1);
+    flash.children[0].material.depthTest = false;
     flash.children[1].intensity = 2;
     root.add(flash);
     root.traverse((o) => { if (o.isMesh) { o.castShadow = false; o.frustumCulled = false; } });
     root.visible = false;
-    out[id] = { root, flash, muzzleZ: muzzleZ * 1.25 };
+    out[id] = { root, flash, muzzleZ: muzzleZ * 0.8 };
   }
   return out;
 }

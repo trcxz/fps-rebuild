@@ -203,7 +203,7 @@ function syncView(dt, time) {
   if (vm) {
     const reload = p.reloadT > 0 ? Math.sin(Math.min(1, 1 - p.reloadT / wdef.reload) * Math.PI) : 0;
     const raise = p.switchT > 0 ? p.switchT / 0.3 : 0;
-    vm.root.position.set(0.2 + Math.sin(bob) * 0.012 * sp, -0.2 - reload * 0.25 - raise * 0.3 - Math.abs(Math.cos(bob)) * 0.01 * sp, -0.42 + vmKick * 0.07);
+    vm.root.position.set(0.17 + Math.sin(bob) * 0.012 * sp, -0.19 - reload * 0.25 - raise * 0.3 - Math.abs(Math.cos(bob)) * 0.01 * sp, -0.4 + vmKick * 0.06);
     vm.root.rotation.set(vmKick * 0.12 + reload * 0.5, 0.04 - reload * 0.3, reload * 0.4);
     vm.flash.visible = p.flashShow > 0;
     if (vm.flash.visible) vm.flash.children[0].material.rotation = time * 40;

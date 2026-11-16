@@ -139,7 +139,7 @@ export function updateHud(p, spread) {
 
   // feed and radio fade out by age
   $.feed.innerHTML = G.feed.filter((f) => G.time - f.t < FEED_SEC).map((f) =>
-    `<div class="panel"><b style="color:${TEAMS[f.kt].css}">${f.k}</b> [${f.w}${f.head ? ' ⌖' : ''}] <b style="color:${TEAMS[f.vt].css}">${f.v}</b></div>`).join('');
+    `<div class="panel"><b style="color:${TEAMS[f.kt].css}">${f.k}</b> [${f.w}${f.head ? ' HS' : ''}] <b style="color:${TEAMS[f.vt].css}">${f.v}</b></div>`).join('');
   $.radio.innerHTML = G.radio.filter((r) => G.time - r.t < RADIO_SEC && r.team === p.team).map((r) =>
     `<div><b style="color:${TEAMS[r.team].css}">${r.who}</b> (radio): ${r.text}</div>`).join('');
 

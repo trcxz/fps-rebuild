@@ -34,7 +34,7 @@ export function applyShot(name) {
     pose(0, -22, -3, -30, -20, 'halberd');
     p.hp = 82; p.flashShow = 0.05;
     pose(1, -26.5, -8.6, -30, -21, 'wasp', { crouch: false });
-    pose(2, -20, -6, -30, -20, 'halberd');
+    pose(2, -16.5, -12, -30, -20, 'halberd');
     pose(3, -4, 14, 0, -10, 'wasp'); pose(4, 3, 20, 0, -10, 'halberd');
     pose(5, -30.2, -19.5, -22, -3, 'halberd');
     G.actors[5].flashShow = 0.05;
