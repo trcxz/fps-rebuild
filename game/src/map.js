@@ -61,6 +61,7 @@ export const BOMB_NODE = 'ts2';
 // ---- collision for walkers (circle against boxes, per-axis slide) ----
 function pushOut(p, r) {
   for (const o of BOXES) {
+    if (o.h <= p.y + 0.3) continue; // standing on top of it: not a wall
     const cx = clamp(p.x, o.x1, o.x2), cz = clamp(p.z, o.z1, o.z2);
     const dx = p.x - cx, dz = p.z - cz, d2 = dx * dx + dz * dz;
     if (d2 >= r * r) continue;
