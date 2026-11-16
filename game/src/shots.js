@@ -26,6 +26,7 @@ export function applyShot(name) {
   seedRandom(1234);
   const p = G.player;
   p.money = 2650;
+  G.radio.length = 0; G.feed.length = 0; G.banner.until = -1;
   if (name === 'cover') {
     liveRound(78);
     G.score = [3, 2]; G.round = 6;
@@ -81,7 +82,7 @@ export function applyShot(name) {
     // wide: free camera over the whole map, bots spread along their routes
     liveRound(64);
     G.score = [2, 2]; G.round = 5;
-    G.ui.free = { x: 0, y: 62, z: 40, pitch: -1.2, yaw: 0, fov: 62 };
+    G.ui.free = { x: 0, y: 40, z: 33, pitch: -1.05, yaw: 0, fov: 60 };
     const spots = [[-22, 22], [-8, 14], [0, 3], [8, 12], [22, 20], [-25, -8], [-12, -14], [26, -8], [6, -28], [-3, -25]];
     spots.forEach(([x, z], i) => pose(i, x, z, i < 5 ? x * 0.5 : 0, i < 5 ? -30 : 20, i % 3 ? 'wasp' : 'halberd'));
     G.actors[0].alive = true;
